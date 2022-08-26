@@ -10,6 +10,3 @@ development:
 test:
   <<: *default
   database: rails-watch-list_test
-rails db:create
-rails db:migrate
-rails db:seed
