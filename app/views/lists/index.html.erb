@@ -1,5 +1,5 @@
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.ubackground.com/_ph/23/221950857.jpg);">
+<div class="banner" style="background-image: url(https://www.ubackground.com/_ph/23/221950857.jpg);">
   <div class="container">
     <h1>Welcome to Movie Mania</h1>
     <p>Helping find your new favorite movies</p>
@@ -8,11 +8,15 @@
 </div>
 
 <div class="container-grid">
-<div class="cards">
-<% @lists.each do |list| %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    <h2><%= link_to list.name, list_path(list) %><h2>
+  <div class="cards">
+    <% @lists.each do |list| %>
+    <% if list.photo.attached? %>
+      <div class="card-category" style="background-image: url('<%= cl_image_path list.photo.key, crop: :fill%>')">
+    <% else  %>
+      <div class="card-category" style="background-image: url('https://us.123rf.com/450wm/hugolacasse/hugolacasse1603/hugolacasse160300013/53756518-illustration-of-a-film-stripe-reel-on-abstract-movie-background.jpg?ver=6')">
+    <% end %>
+        <h2><%= link_to list.name, list_path(list) %><h2>
+      </div>
+    <% end %>
   </div>
-<% end %>
-</div>
 </div>
